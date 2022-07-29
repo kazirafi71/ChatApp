@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Col, Container, Row } from "react-bootstrap";
@@ -32,6 +32,12 @@ const RegisterComp = () => {
       toast.error(error.response.data.error);
     }
   };
+  useEffect(() => {
+    const auth_token = localStorage.getItem("auth_token");
+    if (auth_token) {
+      navigation("/chat");
+    }
+  }, []);
   return (
     <div>
       <Toaster />
